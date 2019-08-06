@@ -66,7 +66,18 @@
 <meta property="og:description" content="为什么学Git? 1 工欲善其事，必先利其器 2 Def：distributed Version Control System(VCS) for tracking changes in computer files 3 His:　  &amp;nbsp;&amp;nbsp;&amp;nbsp;Linus-&amp;gt;Linux (1991)：diff+Linus手工合并代码:CVS\SVN集中式速度慢,商用版不符合开源精神">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://todr.ink/2019/08/04/TL01/stage.png">
-<meta property="og:updated_time" content="2019-08-04T11:14:27.171Z">
+<meta property="og:image" content="http://todr.ink/2019/08/04/TL01/SSHkey.png">
+<meta property="og:image" content="http://todr.ink/2019/08/04/TL01/branch01.png">
+<meta property="og:image" content="http://todr.ink/2019/08/04/TL01/branch02.png">
+<meta property="og:image" content="http://todr.ink/2019/08/04/TL01/branch03.png">
+<meta property="og:image" content="http://todr.ink/2019/08/04/TL01/branch04.png">
+<meta property="og:image" content="http://todr.ink/2019/08/04/TL01/branch05.png">
+<meta property="og:image" content="http://todr.ink/2019/08/04/TL01/branch06.png">
+<meta property="og:image" content="http://todr.ink/2019/08/04/TL01/branch04.png">
+<meta property="og:image" content="http://todr.ink/2019/08/04/TL01/branch05.png">
+<meta property="og:image" content="http://todr.ink/2019/08/04/TL01/branch06.png">
+<meta property="og:image" content="http://todr.ink/2019/08/04/TL01/branch07.png">
+<meta property="og:updated_time" content="2019-08-06T12:06:50.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git">
 <meta name="twitter:description" content="为什么学Git? 1 工欲善其事，必先利其器 2 Def：distributed Version Control System(VCS) for tracking changes in computer files 3 His:　  &amp;nbsp;&amp;nbsp;&amp;nbsp;Linus-&amp;gt;Linux (1991)：diff+Linus手工合并代码:CVS\SVN集中式速度慢,商用版不符合开源精神">
@@ -262,11 +273,21 @@
                 
               
 
-              <time title="创建时间：2019-08-04 07:25:28 / 修改时间：11:14:27" itemprop="dateCreated datePublished" datetime="2019-08-04T07:25:28Z">2019-08-04</time>
+              <time title="创建时间：2019-08-04 07:25:28" itemprop="dateCreated datePublished" datetime="2019-08-04T07:25:28Z">2019-08-04</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-06 12:06:50" itemprop="dateModified" datetime="2019-08-06T12:06:50Z">2019-08-06</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -293,7 +314,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">5.1k</span>
+              <span title="本文字数">15k</span>
             </span>
           
             <span class="post-meta-item">
@@ -303,7 +324,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">5 分钟</span>
+              <span title="阅读时长">14 分钟</span>
             </span>
           
 
@@ -384,7 +405,7 @@
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git log --pretty=oneline</span><br><span class="line">092719a05ea5929fb2a72c990ae3a38a5b0b8129 (HEAD -&gt; master) append GPL</span><br><span class="line">8a74499d95b927245debf21afadf001e621cb948 add free</span><br><span class="line">51e675ad6e4a906bd4de3c65ef830b9564864ca4 add distributed</span><br></pre></td></tr></table></figure>
 
 <p>  为了解决多人协作版本冲突问题，git采用了SHA1计算出的数字十六进制来表示版本号<code>commit id</code></p>
-<p>  <strong>2.2.版本回退</strong><br>  HEAD 表示当前版本，HEAD^表示上一个版本，上N个版本用HEAD~N表示。<br>  现在要从当前版本append GPL 回退到上一个版本 add free</p>
+<p>  <span id="001"></span><br>  <strong>2.2.版本回退</strong><br>  HEAD 表示当前版本，HEAD^表示上一个版本，上N个版本用HEAD~N表示。<br>  现在要从当前版本append GPL 回退到上一个版本 add free</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD^ //使用commit id也可以</span><br><span class="line">HEAD is now at 8a74499 add free</span><br><span class="line"></span><br><span class="line">$ cat readme.md</span><br><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free softwave</span><br></pre></td></tr></table></figure>
 
 <p>  <strong>2.3.回到未来</strong><br>  当经过上一步版本回退后，查看提交日志时，你会发现新的版本已经消失：</p>
@@ -395,17 +416,203 @@
 
 </li>
 </ul>
+<p><span id="002"></span></p>
 <h5 id="remote"><a href="#remote" class="headerlink" title="remote"></a>remote</h5><h6 id="1-SSH-Key"><a href="#1-SSH-Key" class="headerlink" title="1.SSH Key"></a>1.SSH Key</h6><ul>
 <li><p>1 创建SSH Key</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
 
-<p>  一路回车使用默认值<br>  通过查看电脑用户目录下.ssh目录里的</p>
+<p>  一路回车使用默认值<br>  通过查看电脑用户目录下<code>.ssh</code>目录,其中<br>  <code>id_rsa</code> 为私钥，<code>id_rsa.pub</code>为公钥。</p>
 </li>
+<li><p>2 添加SSH Key<br>  登录Github-&gt;Account Settings-&gt;SSH Keys-&gt;Add SSH Key<br>  添加id_rsa.pub内容，Title任意。<br>  <img src="/2019/08/04/TL01/SSHkey.png" alt="SSHKEY"></p>
+</li>
+<li><p>Github SSH Key 的意义<br>  因为GitHub需要识别出你的身份，才能允许你推送提交(Push)，而Git支持SSH协议，因此SSH Key是必要的。</p>
+</li>
+</ul>
+<h6 id="2-本地到远程"><a href="#2-本地到远程" class="headerlink" title="2.本地到远程"></a>2.本地到远程</h6><ul>
+<li><p>1 添加远程库<br>  情景：本地创建了仓库myres，需要在Github上建立远程仓库。<br>  <strong>步骤一</strong>： Github创建同名仓库<br>  <strong>步骤二</strong>： 在本地仓库下与Github仓库关联</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin git@github.com:username/resname.git // origin 是git默认远程库叫法</span><br></pre></td></tr></table></figure>
+
+<p>  Ps:这里需要将SSH KEY添加到账号/仓库中，否则只是关联，无法推送<br>  <strong>步骤三</strong>： 推送本地仓库内容到远程库</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br><span class="line">Counting objects: 20, done.</span><br><span class="line">Delta compression using up to 4 threads.</span><br><span class="line">Compressing objects: 100% (15/15), done.</span><br><span class="line">Writing objects: 100% (20/20), 1.64 KiB | 560.00 KiB/s, done.</span><br><span class="line">Total 20 (delta 5), reused 0 (delta 0)</span><br><span class="line">remote: Resolving deltas: 100% (5/5), done.</span><br><span class="line">To github.com:username/resname.git</span><br><span class="line">* [new branch]      master -&gt; master</span><br><span class="line">Branch &apos;master&apos; set up to track remote branch &apos;master&apos; from &apos;origin&apos;.</span><br></pre></td></tr></table></figure>
+
+<p>  Ps:第一次推送时,使用<code>git push</code> 实际上是把master 推送到了远程库，而加上<code>-u</code>参数不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。</p>
+</li>
+<li><p>2 Push 推送<br>  <strong>Def</strong>: 将本地master分支<strong>提交后</strong>的最新修改推送至GitHub<br>  <strong>Use</strong>:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h6 id="3-远程到本地"><a href="#3-远程到本地" class="headerlink" title="3.远程到本地"></a>3.远程到本地</h6><ul>
+<li><p>1 克隆远程库<br>  情景：已经有了GitHub远程库，想要在本地建立仓库。<br>  <strong>步骤一</strong>：获取远程库地址<br>  <strong>步骤二</strong>：克隆远程库到本地</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git@github.com:username/remotename.git</span><br><span class="line">Cloning into &apos;remotename&apos;...</span><br><span class="line">remote: Counting objects: 3, done.</span><br><span class="line">remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 3</span><br><span class="line">Receiving objects: 100% (3/3), done.</span><br></pre></td></tr></table></figure>
+
+<p>  此时本地就有了远程仓库的所有文件<br>  Ps: 远程库地址有两种：<br>  1.git:// 默认使用ssh<br>  2.https 但速度慢，并且每次推送需要输入口令<br>  很多只开放http端口的公司只能使用https，而不使用ssh协议</p>
+</li>
+<li><p>2 Pull 拉取<br>  <strong>Def</strong>: 将GitHub远程库当前版本拉取到本地<br>  <strong>Use</strong>:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h6 id="SSH警告"><a href="#SSH警告" class="headerlink" title="SSH警告"></a>SSH警告</h6><ul>
+<li><p>当第一次使用clone|push连接Github时，会得到一个警告：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host &apos;github.com (xx.xx.xx.xx)&apos; can&apos;t be established.</span><br><span class="line">RSA key fingerprint is xx.xx.xx.xx.xx.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br></pre></td></tr></table></figure>
+
+<p>这是因为Git使用SSH连接，而SSH连接在第一次验证GitHub服务器的Key时，需要你确认GitHub的Key的指纹信息是否真的来自GitHub的服务器，输入<code>yes</code>回车即可。<br>Git会输出一个警告，告诉你已经把GitHub的Key添加到本机的一个信任列表里了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Warning: Permanently added &apos;github.com&apos; (RSA) to the list of known hosts.</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="Branch"><a href="#Branch" class="headerlink" title="Branch"></a>Branch</h5><h6 id="1-Def"><a href="#1-Def" class="headerlink" title="1.Def"></a>1.Def</h6><ul>
+<li>分支是为了将修改记录的整体流程分叉保存。分叉后的分支不受其他分支的影响，所以在同一个数据库里可以同时进行多个修改。</li>
+<li>为了不受其他开发人员的影响，您可以在主分支上建立自己专用的分支。完成工作后，将自己分支上的修改合并到主分支。因为每一次提交的历史记录都会被保存，所以当发生问题时，定位和修改造成问题的提交就容易多了。</li>
+</ul>
+<h6 id="2-创建与合并分支"><a href="#2-创建与合并分支" class="headerlink" title="2.创建与合并分支"></a>2.创建与合并分支</h6><ul>
+<li><p>1.Def：<br>  在<a href="#001">版本回退</a>,我们知道,每次提交，Git都把它们串成一条时间线，这条时间线就是一个分支。<br>  目前为止，只有一条主分支<code>master</code>，而<code>HEAD</code>是指向<code>master</code>,<code>master</code>才是指向提交的。<br>  <code>HEAD</code>指向的就是<strong>当前</strong>分支.<br>  <img src="/2019/08/04/TL01/branch01.png" alt="branch01"></p>
+</li>
+<li><p>2.branch<br>  <strong>创建新的分支dev并切换</strong></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git branch dev</span><br><span class="line">$ git checkout dev</span><br><span class="line">Switched to a new branch &apos;dev&apos;</span><br></pre></td></tr></table></figure>
+
+<p>  或</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b dev</span><br><span class="line">Switched to a new branch &apos;dev&apos;</span><br></pre></td></tr></table></figure>
+
+<p>  此时，git新建了一个指针叫<code>dev</code>，指向<code>master</code>相同的提交，再把<code>HEAD</code>指向<code>dev</code>，就表示<code>当前</code>分支在<code>dev</code>上<br>  <img src="/2019/08/04/TL01/branch02.png" alt="branch02"></p>
+<p>  <strong>修改提交后指针变化</strong><br>  在进入<code>dev</code>分支后，工作区的修改和提交就是针对<code>dev</code>分支了，比如此时新提交一次，则：<br>  <img src="/2019/08/04/TL01/branch03.png" alt="branch03"></p>
+<p>  <strong>合并分支并删除dev</strong><br>  当<code>dev</code>上的工作完成后，将<code>master</code>直接指向<code>dev</code>当前提交时，便完成了合并</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master //切回master,此时你会发现master里没有dev上更改的文件</span><br><span class="line">Switched to branch &apos;master&apos;</span><br><span class="line">$ git merge dev //合并dev. </span><br><span class="line">Updating d46f35e..b17d20e</span><br><span class="line">Fast-forward</span><br><span class="line">readme.txt | 1 +</span><br><span class="line">1 file changed, 1 insertion(+)</span><br></pre></td></tr></table></figure>
+
+<p>  <code>Fast-forward</code>表示这次合并时快进模式，也就是直接把master指向dev的当前提交，所以合并速度非常快。<br>  <img src="/2019/08/04/TL01/branch04.png" alt="branch04"></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git branch //查看分支，*表示当前分支</span><br><span class="line">* dev</span><br><span class="line">master</span><br><span class="line">$ git branch -d dev //删除dev分支</span><br><span class="line">$ git branch </span><br><span class="line">* master</span><br></pre></td></tr></table></figure>
+
+<p>  <img src="/2019/08/04/TL01/branch05.png" alt="branch05"></p>
+</li>
+</ul>
+<h6 id="3-解决冲突"><a href="#3-解决冲突" class="headerlink" title="3.解决冲突"></a>3.解决冲突</h6><ul>
+<li><p>1 Def:<br>  <strong>conflict</strong>：冲突，同一处不同的修改合并产生的冲突。</p>
+</li>
+<li><p>2 Solution:<br>  情景：<br>  <code>feature1</code>分支 提交修改了readme.md</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Creating a new branch is quick AND simple</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git add *</span><br><span class="line">$ git commit -m &quot;AND&quot;</span><br><span class="line">[feature1 c5584de] AND</span><br><span class="line">1 file changed, 1 insertion(+), 2 deletions(-)</span><br></pre></td></tr></table></figure>
+
+<p>  <code>master</code>分支 提交修改了readme.md</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Creating a new branch is quick &amp; simple</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git add *</span><br><span class="line">$ git commit -m &quot;&amp;&quot;</span><br><span class="line">[master 59d6553] &amp;</span><br><span class="line">1 file changed, 1 insertion(+), 2 deletions(-)</span><br></pre></td></tr></table></figure>
+
+<p>  <code>merge</code>命令 合并时：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git merge feature1</span><br><span class="line">Auto-merging readme.md</span><br><span class="line">CONFLICT (content): Merge conflict in readme.md</span><br><span class="line">Automatic merge failed; fix conflicts and then commit the result.</span><br></pre></td></tr></table></figure>
+
+<p>  Git告诉我们readme.md发生了冲突，我们也可以通过status查看</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">You have unmerged paths.</span><br><span class="line">(fix conflicts and run &quot;git commit&quot;)</span><br><span class="line">(use &quot;git merge --abort&quot; to abort the merge)</span><br><span class="line"></span><br><span class="line">Unmerged paths:</span><br><span class="line">(use &quot;git add &lt;file&gt;...&quot; to mark resolution)</span><br><span class="line"></span><br><span class="line">        both modified:   readme.md</span><br><span class="line"></span><br><span class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>  我们打开readme.md</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">Creating a new branch is quick &amp; simple</span><br><span class="line">=======</span><br><span class="line">Creating a new branch is quick AND simple</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature1</span><br></pre></td></tr></table></figure>
+
+<p>  Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容</p>
+<p>  我们修改后保存再提交：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Creating a new branch is quick AND simple</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add readme.md</span><br><span class="line">$ git commit -m &quot;conflict fixed&quot;</span><br><span class="line">[master ec49478] conflict fixed</span><br></pre></td></tr></table></figure>
+
+<p>  <img src="/2019/08/04/TL01/branch06.png" alt="branch06"><br>  通过<code>log</code>查看分支合并情况：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git log --graph --pretty=oneline --abbrev-commit //git log --graph命令可以看到分支合并图</span><br><span class="line">*   ec49478 (HEAD -&gt; master) conflict fixed</span><br><span class="line">|\</span><br><span class="line">| * c5584de (feature1) AND</span><br><span class="line">* | 59d6553 &amp;</span><br><span class="line">|/</span><br><span class="line">* 092719a append GPL</span><br><span class="line">* 8a74499 add free“</span><br><span class="line">* 51e675a add distributed</span><br><span class="line">* 99ae527 add readme</span><br><span class="line">$ git branch -d feature1 //最后删除分支</span><br><span class="line">Deleted branch feature1 (was c5584de).</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h6 id="4-分支管理策略"><a href="#4-分支管理策略" class="headerlink" title="4.分支管理策略"></a>4.分支管理策略</h6><ul>
+<li><p>1 Def:<br>  合并分支时，通常如果可能(不发生冲突),Git会默认使用<code>Fast forward</code>模式，但是这种模式下，删除分支后，会丢失分支信息。<br>  <img src="/2019/08/04/TL01/branch04.png" alt="branch04"><br>  <img src="/2019/08/04/TL01/branch05.png" alt="branch05"><br>  如果要强制禁用<code>Fast forward</code>模式，Git会在<code>merge</code>时生成一个新的commit，这样就可以从分支历史上看出分支信息<br>  即类似下面合并后：<br>  <img src="/2019/08/04/TL01/branch06.png" alt="branch06"></p>
+</li>
+<li><p>2 Use:<code>--no-ff</code></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git merge --no-ff -m &quot;merge with on-ff&quot; dev </span><br><span class="line">Merge made by the &apos;recursive&apos; strategy.</span><br><span class="line">readme.md | 2 +-</span><br><span class="line">1 file changed, 1 insertion(+), 1 deletion(-)</span><br><span class="line">$ git log --graph --pretty=oneline --abbrev-commit</span><br><span class="line">*   f0fcabe (HEAD -&gt; master) merge with no-ff</span><br><span class="line">|\</span><br><span class="line">| * ee54c4c (dev) add merge</span><br><span class="line">|/</span><br><span class="line">*   ec49478 conflict fixed</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3 实际开发<br>  master分支仅用来发布新版本，是非常稳定的。<br>  dev分支上进行开发，是不稳定的。<br>  比如1.0版本发布时，先把dev分支合并到master上，再在master分支发布1.0版本；<br>  而你和你的小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了。</p>
+<p>  <img src="/2019/08/04/TL01/branch07.png" alt="此图来自廖雪峰Git教程"></p>
+</li>
+</ul>
+<h6 id="Bug与Feature分支"><a href="#Bug与Feature分支" class="headerlink" title="Bug与Feature分支"></a>Bug与Feature分支</h6><ul>
+<li><p>1 Bug分支<br>  Def: 每个bug都可以通过一个新的临时分支来修复，修复后，合并分支，然后将临时分支删除。<br>  情景： 你遇到一个代号404的bug，打算创建临时分支<code>issue-404</code>来修复，但<code>dev</code>上工作进行了一半还没提交。<br>  <strong>步骤一</strong>：<code>stash</code>储存工作现场</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git stash</span><br><span class="line">Saved working directory and index state WIP on dev: f0fcabe merge with no-ff</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>步骤二</strong>： 从指定分支创建临时修复bug分支</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line">Switched to branch &apos;master&apos;</span><br><span class="line">$ git checkout -b issue-404</span><br><span class="line">Switched to a new branch &apos;issue-404&apos;</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>步骤三</strong>：修复bug</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git add *</span><br><span class="line">$ git commit -m &quot;fix bug 404&quot;</span><br><span class="line">[issue-404 d9abeeb] fix bug 404</span><br><span class="line"> 1 file changed, 1 insertion(+), 1 deletion(-)</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>步骤四</strong>：合并分支并删除bug分支</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line">Switched to branch &apos;master&apos;</span><br><span class="line">$ git merge --no-ff -m &quot;merged bug fix 404&quot; issue-404</span><br><span class="line">Merge made by the &apos;recursive&apos; strategy.</span><br><span class="line">readme.md | 2 +-</span><br><span class="line">1 file changed, 1 insertion(+), 1 deletion(-)</span><br><span class="line">$ git branch -d issue-404</span><br><span class="line">Deleted branch issue-404 (was d9abeeb).</span><br><span class="line">$ git checkout dev</span><br><span class="line">Switched to branch &apos;dev&apos;</span><br><span class="line">$ git status</span><br><span class="line">On branch dev</span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>步骤五</strong>：<code>stash apply+drop /pop</code>恢复工作现场</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ git stash list</span><br><span class="line">stash@&#123;0&#125;: WIP on dev:  f0fcabe merge with no-ff</span><br><span class="line">$ git stash pop //恢复同时删除stash内容，apply stash@&#123;0&#125;只是恢复，需要drop stash@&#123;0&#125;:删除</span><br><span class="line">On branch dev</span><br><span class="line">Changes to be committed:</span><br><span class="line">(use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">    new file:   hello.py</span><br><span class="line"></span><br><span class="line">Changes not staged for commit:</span><br><span class="line">(use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">(use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">    modified:   readme.txt</span><br><span class="line"></span><br><span class="line">Dropped refs/stash@&#123;0&#125; (5d677e2ee266f39ea296182fb2354265b91b3b2a)</span><br><span class="line">$ git stash list //检查</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2 feature分支<br>  Def: 在软件开发过程中，添加一个新功能时，肯定不希望因为一些实验性质的代码，把主分支搞乱了，所以，每添加一个新功能，最好新建一个feature分支，在上面开发，完成后，合并，最后，删除该feature分支<br>  情景一：开发完成，合并分支，删除分支，顺利完成。<br>  情景二：功能叫停，含机密资料的分支必须销毁</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d feature-x</span><br><span class="line">error: The branch &apos;feature-x&apos; is not fully merged.</span><br><span class="line">If you are sure you want to delete it, run &apos;git branch -D feature-x&apos;.</span><br></pre></td></tr></table></figure>
+
+<p>  分支还没有被合并，如果删除，将丢失掉修改，如果要强行删除，需要使用大写的<code>-D</code>参数。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -D feature-x</span><br><span class="line">Deleted branch feature-x (was 287773e).</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h6 id="多人协作与Rebase"><a href="#多人协作与Rebase" class="headerlink" title="多人协作与Rebase"></a>多人协作与Rebase</h6><ul>
+<li><p>1 Def：<br>  在<a href="#002">remote</a>,我们学习了Push(推送)、PUll(拉取)，这里具体介绍多人协作时使用。</p>
+</li>
+<li><p>2 Remote远程库信息：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin  git@github.com:username/resname.git (fetch)</span><br><span class="line">origin  git@github.com:username/resname.git (push)</span><br></pre></td></tr></table></figure>
+
+<p>  上面显示了可以抓取和推送的origin的地址。如果没有推送权限，就看不到push的地址</p>
+</li>
+<li><p>3 Push 推送分支</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin branch-name</span><br></pre></td></tr></table></figure>
+
+<p>  <code>master</code>分支是主分支，因此要时刻与远程同步；<br>  <code>dev</code>分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；<code></code>bug<code>分支只用于在本地修复bug，就没必要推到远程了。</code>feature`分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。</p>
+</li>
+<li><p>4 Pull/Clone 抓取分支<br>  多人协作时，大家都会往<code>master</code>和<code>dev</code>分支上推送各自的修改,但是从远程库clone时，默认只能看到本地的<code>master</code><br>  但是需要在<code>dev</code>进行开发，所以必须创建远程origin/dev分支关联：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b dev origin/dev</span><br></pre></td></tr></table></figure>
+
+<p>  在你修改提交<code>dev</code>后试图推送时，发现你的小伙伴已经推送了他的<code>dev</code>提交：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin dev</span><br><span class="line">To github.com:username/resname.git</span><br><span class="line">! [rejected]        dev -&gt; dev (non-fast-forward)</span><br><span class="line">error: failed to push some refs to &apos;git@github.com:username/resname.git&apos;</span><br><span class="line">hint: Updates were rejected because the tip of your current branch is behind</span><br><span class="line">hint: its remote counterpart. Integrate the remote changes (e.g.</span><br><span class="line">hint: &apos;git pull ...&apos;) before pushing again.</span><br><span class="line">hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details.</span><br></pre></td></tr></table></figure>
+
+<p>  推送失败，这时候你需要将最新的提交<code>拉取</code>下来，在本地<code>合并</code>后<code>解除冲突</code>，再<code>推送</code>:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git pull</span><br><span class="line">There is no tracking information for the current branch.</span><br><span class="line">Please specify which branch you want to merge with.</span><br><span class="line">See git-pull(1) for details.</span><br><span class="line"></span><br><span class="line">    git pull &lt;remote&gt; &lt;branch&gt;</span><br><span class="line"></span><br><span class="line">If you wish to set tracking information for this branch you can do so with:</span><br><span class="line"></span><br><span class="line">    git branch --set-upstream-to=origin/&lt;branch&gt; dev</span><br></pre></td></tr></table></figure>
+
+<p>  拉取失败？这是因为<strong>没有指定本地dev分支与远程origin/dev分支的链接</strong>:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch --set-upstream-to=origin/dev dev</span><br><span class="line">Branch &apos;dev&apos; set up to track remote branch &apos;dev&apos; from &apos;origin&apos;.</span><br></pre></td></tr></table></figure>
+
+<p>  链接完成后再进行相应操作：Pull-&gt;merge-&gt;fix conflict-&gt;Push</p>
+</li>
+<li><p>5 实际开发</p>
+<ul>
+<li>首先，可以试图用git push origin branch-name推送自己的修改；</li>
+<li>如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；</li>
+<li>如果合并有冲突，则解决冲突，并在本地提交；</li>
+<li>没有冲突或者解决掉冲突后，再用git push origin branch-name送就能成功</li>
+<li>如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch –set-upstream-to branch-name origin/branch-name。</li>
+</ul>
+</li>
+<li><p>6 rebase<br>  Def: 多人在同一个分支上协作时,很容易出现冲突。即使没有冲突，后push的童鞋不得不先pull，在本地合并，然后才能push成功,此时提交历史非常凌乱，为了解决这个问题，Git提供了<code>Rebase</code>変基。<br>  Use:</p>
+<pre><code>在Push之前，通过rebase 进行提交历史的整理。</code></pre><p>  rebase操作可以把本地未push的分叉提交历史整理成直线；<br>  rebase的目的是使得我们在查看历史提交的变化时更容易，因为分叉的提交需要三方对比。</p>
+</li>
+</ul>
+<h6 id="tag"><a href="#tag" class="headerlink" title="tag"></a>tag</h6><ul>
+<li><p>1 Def:<br>  发布一个版本时，我们通常先在版本库中打一个标签（tag），将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来，所以标签也是版本库的一个快照。</p>
+</li>
+<li><p>2 Use:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git tag name //默认标签是打在最新提交的commit上的</span><br><span class="line">$ git tag name commit_id //也可以先log查看commit,打在之前的版本上。</span><br><span class="line">$ git tag //查看标签</span><br><span class="line">$ git show tagname //查看具体的标签信息(提交id，作者，日期等)</span><br><span class="line">$ git tag -a v0.1 -m &quot;version 0.1 released&quot; 1094adb</span><br><span class="line"></span><br><span class="line">$ git tag -d name //删除</span><br><span class="line">$ git push origin tagname //推送标签到远程</span><br><span class="line">$ git push origin --tags //推送所有标签</span><br><span class="line"></span><br><span class="line">$ git tag -d v0.9 //先删除本地标签</span><br><span class="line">$ git push origin :refs/tags/v0.9 从远程删除，也是push命令</span><br></pre></td></tr></table></figure>
+
+<p>  标签总是和某个commit挂钩。如果这个commit既出现在master分支，又出现在dev分支，那么在这两个分支上都可以看到这个标签。</p>
+</li>
+</ul>
+<h5 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h5><h6 id="Pull-Request"><a href="#Pull-Request" class="headerlink" title="Pull Request"></a>Pull Request</h6><ul>
+<li>TODO</li>
+</ul>
+<h6 id="Git-服务器搭建"><a href="#Git-服务器搭建" class="headerlink" title="Git 服务器搭建"></a>Git 服务器搭建</h6><ul>
+<li>TODO</li>
 </ul>
 <p>参考资料：</p>
 <ul>
 <li>1 <a href="https://www.youtube.com/watch?v=SWYqp7iY_Tc" target="_blank" rel="noopener">Git &amp; GitHub Crash Course For Beginners</a></li>
 <li>2 <a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰Git教程</a></li>
+<li>3 <a href="https://backlog.com/git-tutorial/cn/" target="_blank" rel="noopener">猴子都能懂得GIT入门</a></li>
 </ul>
 
     </div>
@@ -413,6 +620,21 @@
     
     
     
+      <div>
+        
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>alazia</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://todr.ink/2019/08/04/TL01/" title="Git">http://todr.ink/2019/08/04/TL01/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
 
     <footer class="post-footer">
           
@@ -604,7 +826,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么学Git"><span class="nav-number">1.</span> <span class="nav-text">为什么学Git?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Install"><span class="nav-number">2.</span> <span class="nav-text">Install</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Basic-commands"><span class="nav-number">3.</span> <span class="nav-text">Basic commands</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Use"><span class="nav-number">4.</span> <span class="nav-text">Use</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-init"><span class="nav-number">4.1.</span> <span class="nav-text">1.init</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-add与commit"><span class="nav-number">4.2.</span> <span class="nav-text">2.add与commit</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-status与diff"><span class="nav-number">4.3.</span> <span class="nav-text">3.status与diff</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-log、reset与reflog"><span class="nav-number">4.4.</span> <span class="nav-text">4.log、reset与reflog</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#remote"><span class="nav-number">5.</span> <span class="nav-text">remote</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-SSH-Key"><span class="nav-number">5.1.</span> <span class="nav-text">1.SSH Key</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么学Git"><span class="nav-number">1.</span> <span class="nav-text">为什么学Git?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Install"><span class="nav-number">2.</span> <span class="nav-text">Install</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Basic-commands"><span class="nav-number">3.</span> <span class="nav-text">Basic commands</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Use"><span class="nav-number">4.</span> <span class="nav-text">Use</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-init"><span class="nav-number">4.1.</span> <span class="nav-text">1.init</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-add与commit"><span class="nav-number">4.2.</span> <span class="nav-text">2.add与commit</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-status与diff"><span class="nav-number">4.3.</span> <span class="nav-text">3.status与diff</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-log、reset与reflog"><span class="nav-number">4.4.</span> <span class="nav-text">4.log、reset与reflog</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#remote"><span class="nav-number">5.</span> <span class="nav-text">remote</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-SSH-Key"><span class="nav-number">5.1.</span> <span class="nav-text">1.SSH Key</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-本地到远程"><span class="nav-number">5.2.</span> <span class="nav-text">2.本地到远程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-远程到本地"><span class="nav-number">5.3.</span> <span class="nav-text">3.远程到本地</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#SSH警告"><span class="nav-number">5.4.</span> <span class="nav-text">SSH警告</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Branch"><span class="nav-number">6.</span> <span class="nav-text">Branch</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-Def"><span class="nav-number">6.1.</span> <span class="nav-text">1.Def</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-创建与合并分支"><span class="nav-number">6.2.</span> <span class="nav-text">2.创建与合并分支</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-解决冲突"><span class="nav-number">6.3.</span> <span class="nav-text">3.解决冲突</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-分支管理策略"><span class="nav-number">6.4.</span> <span class="nav-text">4.分支管理策略</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Bug与Feature分支"><span class="nav-number">6.5.</span> <span class="nav-text">Bug与Feature分支</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多人协作与Rebase"><span class="nav-number">6.6.</span> <span class="nav-text">多人协作与Rebase</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#tag"><span class="nav-number">6.7.</span> <span class="nav-text">tag</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#其他"><span class="nav-number">7.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Pull-Request"><span class="nav-number">7.1.</span> <span class="nav-text">Pull Request</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Git-服务器搭建"><span class="nav-number">7.2.</span> <span class="nav-text">Git 服务器搭建</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -631,12 +853,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">7k</span>
+    <span title="站点总字数">17k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6 分钟</span>
+    <span title="站点阅读时长">16 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
