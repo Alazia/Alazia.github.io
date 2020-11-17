@@ -434,7 +434,7 @@ pre,
   background: #f7f7f7;
   color: #4d4d4c;
   line-height: 1.6;
-  margin: 20px 0;
+  margin: 24px 0;
 }
 pre,
 code {
@@ -1637,7 +1637,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #6c2dff;
+  background: #a7f591;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
