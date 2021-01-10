@@ -3,17 +3,16 @@ title: Mix drinks and change life
 tags: 
 - 杂谈
 comments: false
+date: 01-01-2021
+updated: 01-01-2021
 ---
 
 
 久しぶりです——
 ----------------------------------------------
 >To Drink 是alazia｜空想珺的个人网站
-You can read me from this CyberSpace,Reality OR Virtual
-でも、僕は21世紀の20年代に生きって、様々な社会変化を経験している普通の人です。
 
-<b><p style="color:red;">&nbsp;&nbsp;&nbsp;&nbsp;一般人(いっぱんじん)です
-</p></b>
+You can read me from this CyberSpace,Reality OR Virtual
 
 <!--more-->
 
