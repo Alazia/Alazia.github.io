@@ -22,7 +22,7 @@ git clone https://github.com/Alazia/Alazia.github.io.git
 hexo new post
 hexo clean
 hexo g
-gulp build(or pass)
+gulp
 hexo d
 git add * (and .gitignore)
 git commit -m 'source'
