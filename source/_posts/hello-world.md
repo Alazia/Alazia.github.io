@@ -1,7 +1,7 @@
 ---
 title: Mix drinks and change life
 tags: 
-- 杂谈
+- Thoughts
 comments: false
 date: 01-01-2021
 updated: 01-01-2021
