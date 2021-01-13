@@ -24,7 +24,7 @@ hexo clean
 hexo g
 gulp build(or pass)
 hexo d
-git add * 
+git add * (and .gitignore)
 git commit -m 'source'
 git push origin source
 ```

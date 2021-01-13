@@ -1,5 +1,5 @@
 ---
-title: Mix drinks and change life
+title: Mix drinks and change lives
 tags: 
 - Thoughts
 comments: false
