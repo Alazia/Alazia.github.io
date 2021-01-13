@@ -5,7 +5,7 @@ tags: workflow
 categories: Hexo
 ---
 ##### preparation
-- git, add `id_rsa.pub` to 「SSH and GPG keys」
+- git, add `id_rsa.pub` to 「Deploy keys」
 | C:\Users\Administrator\.ssh\id_rsa.pub
 - node.js:v12.8.0
 - npm (mirror)
